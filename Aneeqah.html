@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<head>
+
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,300&display=swap" rel="stylesheet">
+  <title>Armin Arlert</title>
+  <style>
+    body {
+      text-align: center;
+      background: url("https://static.vecteezy.com/system/resources/previews/003/558/450/original/contemporary-artistic-abstract-aesthetic-background-illustration-free-vector.jpg");
+      background-size: cover;
+      background-position: center;
+      color: maroon;
+      font-family: 'Josefin Sans', sans-serif;
+    }
+    p {
+      font-size: 22px;
+    }
+    input {
+      border: 0;
+      padding: 10px;
+      font-size: 18px;
+    }
+    input[type="submit"] {
+      background: yellow;
+      color: maroon;
+    }
+    img {
+      border-radius: 50px;
+      }
+  </style>
+</head>
+<body>
+  <img src="https://i.pinimg.com/236x/fd/24/41/fd244148c8e3bab3a670e520411fb23a.jpg">
+  <p>Hi! I'm Armin, an Eldian titan holder!</p>
+  <input id="Name" placeholder="Your name">
+  <input id="Email" placeholder="Your email">
+  <input id="submit" type="submit">
+  
+  
+  <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+  import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyCb_vK6MsOTnXRt4B5OUuBkBhuq7OHh6lI",
+    authDomain: "armin-arlert.firebaseapp.com",
+    projectId: "armin-arlert",
+    storageBucket: "armin-arlert.appspot.com",
+    messagingSenderId: "75049832256",
+    appId: "1:75049832256:web:89c19107a3ec52fab034a5"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+  const Name = document.querySelector("#Name") 
+  const Email = document.querySelector("#Email")
+  document.querySelector('#submit').addEventListener('click', Submit)
+  
+  function Submit() {
+	  const timestamp = buildTimestamp()
+	  
+	  set(ref(db, timestamp), {
+		  Name: Name.value,
+	      email: Email.value,
+	  });
+
+	  Name.value = ""
+	  Email.value = ""
+	}
+function buildTimestamp() {
+	  const now = new Date();
+	  let timestamp = now.getFullYear().toString() + "/";
+	  //const month = now.toLocaleString('default', { month: 'long' });
+
+	  let month = now.getMonth()+1   //add 1 because Javascript uses 0 for January
+	  month = month.toString()
+	  month = addLeadingZero(month)
+	  timestamp += month + "/"; 
+
+	  let date = now.getDate().toString()
+	  date = addLeadingZero(date)
+	  timestamp += date + "/";
+
+	  let hours = now.getHours().toString()
+	  hours = addLeadingZero(hours)
+	  timestamp += hours + ":";
+
+	  let minutes = now.getMinutes().toString()
+	  minutes = addLeadingZero(minutes)
+	  timestamp += minutes + ":";
+
+	  let seconds = now.getSeconds().toString()
+	  seconds = addLeadingZero(seconds)
+	  timestamp += seconds;
+  
+	  return timestamp
+	}
+	
+	function addLeadingZero(units) {
+		if (units.length < 2) {
+			units = "0" + units
+		}
+		return units
+	}
+
+
+</script>
+</body>
+

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kolker+Brush&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,300&display=swap" rel="stylesheet">
+<style>
+body {
+  font-family: 'Josefin Sans', sans-serif;
+  margin: 0 auto;
+  max-width: 900px;
+  background: #235543;
+}
+div {
+  height: 400px;
+  background-size: cover;
+  position: relative;
+  margin: 50px 0 0 0;
+  border-radius: 20px;
+}
+h1 {
+  font-family: 'Kolker Brush', cursive;;
+  text-align: center;
+  font-size: 100px;
+  color: maroon;
+  margin: 60px 0 0 0;
+}
+h2 {
+  text-align: center;
+  color: yellow;
+  margin: 0px 0 70px 0;
+  font-size: 60;
+}
+p {
+  color: rgba(255,25,25,6);
+  background: red;
+  background: linear-gradient(bottom, rgba(610,500,670,0), rgba(600,800,795,.4));
+  background: -webkit-linear-gradient(bottom, rgba(897,350,600,1), rgba(0,0,800,.4));
+  background: -moz-linear-gradient(bottom, rgba(0,500,0,1), rgba(0,200,.4));
+  padding: 10px;
+  line-height: 38px;
+  text-align: justify;
+  position: absolute;
+  bottom: 0;
+  margin: 0;
+  height: 20px;
+  font-size: 20;
+  transition: height .5s;
+  -webkit-transition: height .5s;
+  -moz-transition: height .5s;
+}
+
+small {
+  opacity: 0;
+}
+
+.show-description p {
+  height: 150px;
+}
+
+.show-description small {
+  opacity: 1;
+}
+
+.first{
+  background-image: url("https://www.otaquest.com/wp-content/uploads/2021/07/eren-yeager-feature-image.png");
+}
+.second{
+  background-image: url("https://sportshub.cbsistatic.com/i/2021/03/18/f16a20e9-929e-4901-bcba-85d90491851f/attack-on-titan-mikasa-season-four-1238216.jpg");
+}
+.dessert{
+  background-image: url("https://i.pinimg.com/originals/40/b6/07/40b6072a454cdb2b8555c3fa73949038.jpg");
+}
+.price {
+  float: right;
+}
+input {
+        font-size: 22px;
+}
+
+@media (max-width: 500px) {
+  h1 {
+    font-size: 50px;
+    margin-top: 20px;
+    line-height: 40px;
+  }
+  h2 {
+    font-size: 30px;
+    margin: 20px 0 30px 0;
+  }
+  div {
+    margin: 20px 12px 0 12px;
+  }
+  p {
+    font-size: 20px;
+    line-height: 24px;
+  }
+  small {
+    font-size: 19px;
+  }
+}
+
+</style>
+
+</head>
+
+<body>
+<h1>Attack On Titan </h1>
+<h2>Main Characters</h2>
+<div class="first">
+     <input type="number" min="0" style="width: 50px" class="quantities">
+  <p>Eren Yeager <span class="price">$10</span><br />
+  <small>Eren Yeager is at the center of Attack on Titan and can be called the main character. From his progression throughout Season 1 in finding out that he can transform into a titan to his turn into the bad guy in Season 4 when he declares war on the entire world, Eren Yeager’s story is very complicated and well-written. He is loyal to his friends and always has a master plan that he keeps to himself. </small></p>
+</div>
+
+<div class="second">
+     <input type="number" min="0" style="width: 50px" class="quantities">
+  <p>Mikasa Ackerman<span class="price">$10</span><br />
+  <small>Mikasa Ackerman can be seen as another major main character as she is Eren’s childhood friend. She is one of the best fighters, hardly shows emotion, and always protects Eren at any cost. The Ackerman family are people that were genetically tested on to protect the king of Eldia. As one of the last Ackerman left, Mikasa contains special fighting abilities and still has a couple of mysteries to unravel.</small></p>
+</div>
+  
+<div class="dessert">
+     <input type="number" min="0" style="width: 50px" class="quantities">
+  <p>Armin Arlert<span class="price">$10</span><br />
+  <small>The last of the original trio of main characters in Attack on Titan is Armin Arlert. Armin is extremely intelligent, selfless, and loyal to his friends. He is one of the only level-headed and logical members of the entire Attack on Titan roster. He is willing to risk his own life for his friends and received the Colossal titan when he was about to die. At the end of Season 4 Part 2, Armin and Mikasa are against Eren and Part 3 will reveal what lies ahead for these characters.</small></p>
+</div>
+
+        <br><br>
+  <input id="Name" placeholder="Your name">
+  <input id="Email" placeholder="Your email">
+  <input id ="submit" type="submit">
+	    <br><br>
+<script>
+  $('div').on('click', function() {
+      $(this).toggleClass('show-description');
+  });
+</script>
+
+<script type="module">
+  // Import the functions you need from the SDKs you need
+      import { initializeApp } from 
+  "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+      import { getDatabase, ref, set } from 
+  "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
+
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyBr4JUcBkyPTNCo1XTT6ekT3DowQ7cv0EA",
+    authDomain: "aneeqahhhlalala.firebaseapp.com",
+    projectId: "aneeqahhhlalala",
+    storageBucket: "aneeqahhhlalala.appspot.com",
+    messagingSenderId: "297362128397",
+    appId: "1:297362128397:web:d2dc2f7828570ee9779f44"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  
+  const db = getDatabase(app);
+  const Name = document.querySelector("#Name") 
+  const Email = document.querySelector("#Email")
+  document.querySelector('#submit').addEventListener('click', Submit)
+  const quantities = document.querySelectorAll(".quantities")
+  const itemsList = ["Eren Yeager", "Mikasa Ackerman", "Armin Arlert"]
+	const prices = document.querySelectorAll(".price")
+  
+  function Submit() {
+	  const timestamp = buildTimestamp()
+	      let total = 0
+       
+	      
+	  	  let cart = { }
+	      for  (let i=0; i<quantities.length; i=i+1) {
+          let price = prices[i].innerHTML.replace('$', '')
+		  total = total + quantities[i].value * price 
+			  
+	  	        if (quantities[i].value != "0" && quantities[i].value != "") {	
+	  		cart[itemsList[i]] = parseInt(quantities[i].value) 
+	  	}
+	  	quantities[i].value = ""
+	  }
+
+
+	  
+	  set(ref(db, timestamp), {
+		  Name: Name.value,
+	      email: Email.value,
+		  cart: cart,
+          totalPrice: total,
+		  paid: "not yet",
+	  });
+
+	  Name.value = ""
+	  Email.value = ""
+	}
+    function buildTimestamp() {
+	  const now = new Date();
+	  let timestamp = now.getFullYear().toString() + "/";
+	  //const month = now.toLocaleString('default', { month: 'long' });
+
+	  let month = now.getMonth()+1   //add 1 because Javascript uses 0 for January
+	  month = month.toString()
+	  month = addLeadingZero(month)
+	  timestamp += month + "/"; 
+
+	  let date = now.getDate().toString()
+	  date = addLeadingZero(date)
+	  timestamp += date + "/";
+
+	  let hours = now.getHours().toString()
+	  hours = addLeadingZero(hours)
+	  timestamp += hours + ":";
+
+	  let minutes = now.getMinutes().toString()
+	  minutes = addLeadingZero(minutes)
+	  timestamp += minutes + ":";
+
+	  let seconds = now.getSeconds().toString()
+	  seconds = addLeadingZero(seconds)
+	  timestamp += seconds;
+  
+	  return timestamp
+	}
+	
+	function addLeadingZero(units) {
+		if (units.length < 2) {
+			units = "0" + units
+		}
+		return units
+	}
+
+</script>
+</body>
